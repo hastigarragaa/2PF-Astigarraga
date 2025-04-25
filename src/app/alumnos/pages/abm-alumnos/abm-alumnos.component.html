@@ -1,0 +1,44 @@
+<h2>ABM de Alumno</h2>
+
+<form [formGroup]="alumnoForm" (ngSubmit)="guardar()">
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre" required>
+    <mat-error *ngIf="alumnoForm.get('nombre')?.invalid && alumnoForm.get('nombre')?.touched">
+      El nombre es obligatorio
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Apellido</mat-label>
+    <input matInput formControlName="apellido" required>
+    <mat-error *ngIf="alumnoForm.get('apellido')?.invalid && alumnoForm.get('apellido')?.touched">
+      El apellido es obligatorio
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Curso</mat-label>
+    <input matInput formControlName="curso" required>
+    <mat-error *ngIf="alumnoForm.get('curso')?.invalid && alumnoForm.get('curso')?.touched">
+      El curso es obligatorio
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" type="email" required>
+    <mat-error *ngIf="alumnoForm.get('email')?.hasError('required') && alumnoForm.get('email')?.touched">
+      El email es obligatorio
+    </mat-error>
+    <mat-error *ngIf="alumnoForm.get('email')?.hasError('email') && alumnoForm.get('email')?.touched">
+      El email no es válido
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="alumnoForm.invalid">
+    Guardar
+  </button>
+
+</form>
