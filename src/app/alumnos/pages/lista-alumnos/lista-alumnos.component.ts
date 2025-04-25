@@ -8,7 +8,12 @@ import { ResaltadoDirective } from '../../directives/resaltado.directive';
 @Component({
   selector: 'app-lista-alumnos',
   standalone: true,
-  imports: [CommonModule, MatTableModule, NombreCompletoPipe, ResaltadoDirective],
+  imports: [
+    CommonModule,
+    MatTableModule,
+    NombreCompletoPipe,
+    ResaltadoDirective
+  ],
   templateUrl: './lista-alumnos.component.html',
   styleUrls: ['./lista-alumnos.component.scss']
 })

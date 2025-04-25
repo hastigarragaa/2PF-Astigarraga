@@ -1,25 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 import { AlumnosService } from '../alumnos/services/alumnos.service';
-import { MatIconModule } from '@angular/material/icon';
+import { CursosService } from '../features/cursos/services/cursos.service';
+import { ClasesService } from '../features/clases/services/clases.service';
+
+
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatCardModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   totalAlumnos = 0;
   totalCursos = 0;
-  ultimoAlumno: any = null;
+  totalClases = 0;
+  ultimoAlumno: string = '';
 
-  constructor(private alumnosService: AlumnosService) {
+  constructor(
+    private alumnosService: AlumnosService,
+    private cursosService: CursosService,
+    private clasesService: ClasesService
+  ) {}
+
+  ngOnInit(): void {
     this.alumnosService.alumnos$.subscribe(alumnos => {
       this.totalAlumnos = alumnos.length;
-      this.totalCursos = new Set(alumnos.map(a => a.curso)).size;
-      this.ultimoAlumno = alumnos[alumnos.length - 1];
+      this.ultimoAlumno = alumnos.length ? `${alumnos[alumnos.length - 1].nombre} ${alumnos[alumnos.length - 1].apellido}` : '';
+    });
+
+    this.cursosService.getCursos().subscribe(cursos => {
+      this.totalCursos = cursos.length;
+    });
+
+    this.clasesService.getClases().subscribe(clases => {
+      this.totalClases = clases.length;
     });
   }
 }

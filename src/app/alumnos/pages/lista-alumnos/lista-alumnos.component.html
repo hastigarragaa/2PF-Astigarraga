@@ -9,7 +9,7 @@
 
   <ng-container matColumnDef="nombreCompleto">
     <th mat-header-cell *matHeaderCellDef>Nombre completo</th>
-    <td mat-cell *matCellDef="let alumno">{{ alumno.nombre | nombreCompleto:alumno.apellido }}</td>
+    <td mat-cell *matCellDef="let alumno" td appResaltado>{{ alumno.nombre | nombreCompleto:alumno.apellido }}</td>
   </ng-container>
 
   <ng-container matColumnDef="curso">

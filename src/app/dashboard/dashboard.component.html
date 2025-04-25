@@ -1,21 +1,23 @@
 <h2>Dashboard</h2>
 
-<div class="cards">
-  <div class="card">
-    <mat-icon>person</mat-icon>
+<div class="dashboard-cards">
+  <mat-card class="dashboard-card">
     <h3>Alumnos</h3>
     <p>Total: {{ totalAlumnos }}</p>
-  </div>
+  </mat-card>
 
-  <div class="card">
-    <mat-icon>bookmark</mat-icon>
+  <mat-card class="dashboard-card">
     <h3>Cursos</h3>
     <p>Total: {{ totalCursos }}</p>
-  </div>
+  </mat-card>
 
-  <div class="card">
-    <mat-icon>person_add</mat-icon>
-    <h3>Último ingreso</h3>
-    <p>{{ ultimoAlumno?.nombre }} {{ ultimoAlumno?.apellido }}</p>
-  </div>
+  <mat-card class="dashboard-card">
+    <h3>Clases</h3>
+    <p>Total: {{ totalClases }}</p>
+  </mat-card>
+
+  <mat-card class="dashboard-card">
+    <h3>Último alumno</h3>
+    <p>{{ ultimoAlumno }}</p>
+  </mat-card>
 </div>

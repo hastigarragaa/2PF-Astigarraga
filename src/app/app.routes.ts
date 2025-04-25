@@ -25,6 +25,14 @@ export const routes: Routes = [
           path: 'alumnos/abm',
           loadComponent: () =>
             import('./alumnos/pages/abm-alumnos/abm-alumnos.component').then(m => m.AbmAlumnosComponent)
+        },
+        {
+          path: 'cursos',
+          loadChildren: () => import('./features/cursos/cursos.module').then(m => m.CursosModule)
+        },
+        {
+          path: 'clases',
+          loadChildren: () => import('./features/clases/clases.module').then(m => m.ClasesModule)
         }
       ]
     }
